@@ -38,24 +38,30 @@ var texCoordsArray = [];
 function loadPoints(points,texture) {
     //load the vertex positions and texture positions here
 
-var texCoordsArray = [
-    vec2(0, 0),
-    vec2(0, 1),
-    vec2(1, 1),
-];
 
-var pointsArray = [
-    vec4( -0.5, -0.5,  0.5, 1.0 ),
-    vec4( -0.5,  0.5,  0.5, 1.0 ),
-    vec4( 0.5,  0.5,  0.5, 1.0 ),
-];
+    //The floor
+    points.push(vec4(-6.0, 0 , 10, 1));
+    texture.push(vec2(0, 1));
+    points.push(vec4(-6.0 , 0 , 0, 1));
+    texture.push(vec2(0, .5));
+    points.push(vec4(6.0 , 0 , 0, 1));
+    texture.push(vec2(.5, .5));
 
     points.push(vec4(-6.0, 0 , 10, 1));
-    texture.push(vec2(0,0));
-    points.push(vec4(-6.0 , 0 , 0, 1));
     texture.push(vec2(0, 1));
     points.push(vec4(6.0 , 0 , 0, 1));
-    texture.push(vec2(1, 1));
+    texture.push(vec2(.5, .5));
+    points.push(vec4(6.0 , 0 , 10, 1));
+    texture.push(vec2(.5, 1));
+
+    //The Wall
+    points.push(vec4(-6.0, 0 , 0, 1));
+    texture.push(vec2(0, 0));
+    points.push(vec4(-6.0 , 5 , 0, 1));
+    texture.push(vec2(0, .5));
+    points.push(vec4(6.0 , 0 , 0, 1));
+    texture.push(vec2(.5, 0));
+
 }
 
 function configureTexture(image) {

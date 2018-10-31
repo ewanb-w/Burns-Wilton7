@@ -44,6 +44,9 @@ function loadPoints(points,texture) {
 
 
     //The floor
+<<<<<<< HEAD
+>>>>>>> 4ae70275f941ce6667dbb8048b0c2b64d675f293
+=======
 >>>>>>> 4ae70275f941ce6667dbb8048b0c2b64d675f293
     points.push(vec4(-6.0, 0 , 10, 1));
     texture.push(vec2(0, 1));
@@ -68,6 +71,7 @@ function loadPoints(points,texture) {
     texture.push(vec2(.5, 0));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     points.push(vec4(-6.0 , 5 , 0, 1));
     texture.push(vec2(0, .5));
     points.push(vec4(6.0 , 0 , 0, 1));
@@ -89,6 +93,8 @@ function loadPoints(points,texture) {
     texture.push(vec2(.5, 0));
     points.push(vec4(6.0, 5 , 0, 1));
     texture.push(vec2(.5, .5));a
+=======
+>>>>>>> 4ae70275f941ce6667dbb8048b0c2b64d675f293
 =======
 >>>>>>> 4ae70275f941ce6667dbb8048b0c2b64d675f293
 }

@@ -69,19 +69,19 @@ function loadPoints(points,texture) {
     texture.push(vec2(.5, .5));
 
     //art on wall
-    points.push(vec4(-6.0, 0 , 0, 1));
-    texture.push(vec2(0, 0));
-    points.push(vec4(-6.0 , 5 , 0, 1));
-    texture.push(vec2(0, .5));
-    points.push(vec4(6.0 , 0 , 0, 1));
-    texture.push(vec2(.5, 0));
+    // points.push(vec4(-6.0, 0 , 0, 1));
+    // texture.push(vec2(0, 0));
+    // points.push(vec4(-6.0 , 5 , 0, 1));
+    // texture.push(vec2(0, .5));
+    // points.push(vec4(6.0 , 0 , 0, 1));
+    // texture.push(vec2(.5, 0));
 
-    points.push(vec4(-6.0 , 5 , 0, 1));
-    texture.push(vec2(0, .5));
-    points.push(vec4(6.0 , 0 , 0, 1));
-    texture.push(vec2(.5, 0));
-    points.push(vec4(6.0, 5 , 0, 1));
-    texture.push(vec2(.5, .5));a
+    // points.push(vec4(-6.0 , 5 , 0, 1));
+    // texture.push(vec2(0, .5));
+    // points.push(vec4(6.0 , 0 , 0, 1));
+    // texture.push(vec2(.5, 0));
+    // points.push(vec4(6.0, 5 , 0, 1));
+    // texture.push(vec2(.5, .5));a
 }
 
 function configureTexture(image, option) {
@@ -93,7 +93,7 @@ function configureTexture(image, option) {
         gl.RGBA, gl.UNSIGNED_BYTE, image);
     gl.generateMipmap( gl.TEXTURE_2D );
     
-    // point sampling
+    //point sampling
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_NEAREST);
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST );
 
@@ -102,7 +102,7 @@ function configureTexture(image, option) {
         gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
         gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST );
     }
-    else if (option == 3) //mip map filtering
+    else if (option == 1) //mip map filtering
     {
         gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
         gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
@@ -150,6 +150,11 @@ onload = function init()  {
     //establish texture
     var image = document.getElementById("texImage");
     configureTexture(image);
+
+    document.getElementById("MipMapping" ).onclick = function(event) {
+        textureOption = event.target.index
+        configureTexture(image, textureOption);
+    };
 
    // Initialize event handler (key codes)
     window.onkeydown = function( event ) {

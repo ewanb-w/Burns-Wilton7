@@ -37,28 +37,63 @@ var texCoordsArray = [];
 
 function loadPoints(points,texture) {
     //load the vertex positions and texture positions here
+<<<<<<< HEAD
+    
+      //The floor
+=======
 
-var texCoordsArray = [
-    vec2(0, 0),
-    vec2(0, 1),
-    vec2(1, 1),
-];
 
-var pointsArray = [
-    vec4( -0.5, -0.5,  0.5, 1.0 ),
-    vec4( -0.5,  0.5,  0.5, 1.0 ),
-    vec4( 0.5,  0.5,  0.5, 1.0 ),
-];
+    //The floor
+>>>>>>> 4ae70275f941ce6667dbb8048b0c2b64d675f293
+    points.push(vec4(-6.0, 0 , 10, 1));
+    texture.push(vec2(0, 1));
+    points.push(vec4(-6.0 , 0 , 0, 1));
+    texture.push(vec2(0, .5));
+    points.push(vec4(6.0 , 0 , 0, 1));
+    texture.push(vec2(.5, .5));
 
     points.push(vec4(-6.0, 0 , 10, 1));
-    texture.push(vec2(0,0));
-    points.push(vec4(-6.0 , 0 , 0, 1));
     texture.push(vec2(0, 1));
     points.push(vec4(6.0 , 0 , 0, 1));
-    texture.push(vec2(1, 1));
+    texture.push(vec2(.5, .5));
+    points.push(vec4(6.0 , 0 , 10, 1));
+    texture.push(vec2(.5, 1));
+
+    //The Wall
+    points.push(vec4(-6.0, 0 , 0, 1));
+    texture.push(vec2(0, 0));
+    points.push(vec4(-6.0 , 5 , 0, 1));
+    texture.push(vec2(0, .5));
+    points.push(vec4(6.0 , 0 , 0, 1));
+    texture.push(vec2(.5, 0));
+
+<<<<<<< HEAD
+    points.push(vec4(-6.0 , 5 , 0, 1));
+    texture.push(vec2(0, .5));
+    points.push(vec4(6.0 , 0 , 0, 1));
+    texture.push(vec2(.5, 0));
+    points.push(vec4(6.0, 5 , 0, 1));
+    texture.push(vec2(.5, .5));
+
+    //art on wall
+    points.push(vec4(-6.0, 0 , 0, 1));
+    texture.push(vec2(0, 0));
+    points.push(vec4(-6.0 , 5 , 0, 1));
+    texture.push(vec2(0, .5));
+    points.push(vec4(6.0 , 0 , 0, 1));
+    texture.push(vec2(.5, 0));
+
+    points.push(vec4(-6.0 , 5 , 0, 1));
+    texture.push(vec2(0, .5));
+    points.push(vec4(6.0 , 0 , 0, 1));
+    texture.push(vec2(.5, 0));
+    points.push(vec4(6.0, 5 , 0, 1));
+    texture.push(vec2(.5, .5));a
+=======
+>>>>>>> 4ae70275f941ce6667dbb8048b0c2b64d675f293
 }
 
-function configureTexture(image) {
+function configureTexture(image, option) {
     var texture = gl.createTexture();
     gl.activeTexture( gl.TEXTURE0 );
     gl.bindTexture( gl.TEXTURE_2D, texture );
@@ -67,9 +102,22 @@ function configureTexture(image) {
         gl.RGBA, gl.UNSIGNED_BYTE, image);
     gl.generateMipmap( gl.TEXTURE_2D );
     
-    //point sampling
+    // point sampling
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_NEAREST);
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST );
+
+    if (option == 0)  //point sampling
+    {
+        gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+        gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST );
+    }
+    else if (option == 3) //mip map filtering
+    {
+        gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+        gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+    }
+    console.log(option);
 }
 
 onload = function init()  {

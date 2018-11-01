@@ -89,13 +89,13 @@ function configureTexture(image, option) {
     gl.activeTexture( gl.TEXTURE0 );
     gl.bindTexture( gl.TEXTURE_2D, texture );
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA,
         gl.RGBA, gl.UNSIGNED_BYTE, image);
     gl.generateMipmap( gl.TEXTURE_2D );
     
     //point sampling
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_NEAREST);
-    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST );
+    // gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_NEAREST);
+    // gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST );
 
     if (option == 0)  //point sampling
     {
@@ -111,7 +111,7 @@ function configureTexture(image, option) {
     console.log(option);
 }
 
-onload = function init()  {
+window.onload = function init()  {
 
     canvas = document.getElementById( "gl-canvas" );
 
@@ -151,11 +151,6 @@ onload = function init()  {
     var image = document.getElementById("texImage");
     configureTexture(image);
 
-    document.getElementById("MipMapping" ).onclick = function(event) {
-        textureOption = event.target.index
-        configureTexture(image, textureOption);
-    };
-
    // Initialize event handler (key codes)
     window.onkeydown = function( event ) {
         var key = String.fromCharCode(event.keyCode);
@@ -173,6 +168,11 @@ onload = function init()  {
            theta+=.04;
            break;
         }
+    };
+
+    document.getElementById("MipMapping" ).onclick = function(event) {
+        textureOption = event.target.index
+        configureTexture(image, 0);
     };
 
     render();

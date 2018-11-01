@@ -94,8 +94,8 @@ function configureTexture(image, option) {
     gl.generateMipmap( gl.TEXTURE_2D );
     
     //point sampling
-    // gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_NEAREST);
-    // gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST );
+    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_NEAREST);
+    gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST );
 
     if (option == 0)  //point sampling
     {
@@ -149,7 +149,7 @@ window.onload = function init()  {
 
     //establish texture
     var image = document.getElementById("texImage");
-    configureTexture(image);
+    configureTexture(image,0);
 
    // Initialize event handler (key codes)
     window.onkeydown = function( event ) {
@@ -172,7 +172,7 @@ window.onload = function init()  {
 
     document.getElementById("MipMapping" ).onclick = function(event) {
         textureOption = event.target.index
-        configureTexture(image, 0);
+        configureTexture(image, textureOption);
     };
 
     render();

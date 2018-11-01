@@ -1,6 +1,7 @@
 //name: put Ewan Burns-Wilton
 //description: Assignment 7
-//proposed points: If I neglect to change this comment and the name above, I agree that I will
+//proposed points: I did eveything but add art to the walls and use my own textures for the program. So, 11/15 points.
+//If I neglect to change this comment and the name above, I agree that I will
 // automatically be deducted 1 point (out of 15)
 // 
 // key bindings are set so that pressing 'W' will make the eye position move in z direction
@@ -171,7 +172,7 @@ window.onload = function init()  {
     };
 
     document.getElementById("MipMapping" ).onclick = function(event) {
-        textureOption = event.target.index
+        var textureOption = event.target.index
         configureTexture(image, textureOption);
     };
 
